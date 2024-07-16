@@ -1,0 +1,32 @@
+{
+  "name": "cucumber_playwright_ui",
+  "version": "1.0.0",
+  "description": "UI automation using Cucumber and Playwright (Typescript) ",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npx ts-node src/helper/report/init.ts",
+    "posttest": "npx ts-node src/helper/report/report.ts",
+    "test:failed": "cucumber-js -p rerun @rerun.txt",
+    "test": "suppress-exit-code cross-env ENV=$E cucumber-js --tags $T"
+  },
+  "keywords": [
+    "cucumber",
+    "cucumber - TS",
+    "playwright-cucumber"
+  ],
+  "author": "NT",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.0.1",
+    "@playwright/test": "1.35.0",
+    "@types/node": "^20.11.24",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.1.1",
+    "ts-node": "^10.9.1",
+    "winston": "^3.8.2"
+  },
+  "dependencies": {
+    "multiple-cucumber-html-reporter": "^3.6.2",
+    "suppress-exit-code": "^3.2.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Cucumber",
+            "program": "./node_modules/.bin/cucumber-js",
+            "args": [
+                "--tags",
+                "@smoke",
+                "./src/features"
+            ],
+            "env": {
+                "ENV": "qa"
+            },
+            "console": "integratedTerminal"
+        }
+    ]
+}

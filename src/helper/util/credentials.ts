@@ -1,0 +1,11 @@
+const directory = process.cwd()
+let number = Math.random() * 10
+export let merchAdmin_username = 'ihossain+merchant_Sandbox-KBF-Test-01172024-1@exactpay.com'
+export let merchAdmin_password = 'Password1'
+export let exact_username = 'ExactUser'
+export let exact_email = 'exact1234'+number
+export let password_new = 'Password1'
+export let password_reset = 'Password2'+number
+export let partnerAdmin_username = 'ihossain+partnerAdmin_Sandbox-KBF-Test-11152023@exactpay.com'
+export let partnerAdmin_password = 'Password1'
+export let new_report = 'ExactReport'
