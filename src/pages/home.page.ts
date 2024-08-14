@@ -15,8 +15,8 @@ export default class HomePage {
     reporting: "a:has-text('Reporting')",
   }
 
-  async navigatePage() {
-    await this.page.goto("https://payfac.exactpaysandbox.com/")
+  async verifyHomePage() {
+    await expect(this.page).toHaveURL(/dashboard/);
   }
 
   async checkHeader() {

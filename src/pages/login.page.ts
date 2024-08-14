@@ -1,6 +1,4 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { exact_email, password_new } from "../helper/util/credentials";
-import { testData } from "../helper/util/data/testData";
 
 export default class LoginPage {
     readonly page: Page;
@@ -10,15 +8,16 @@ export default class LoginPage {
     }
     
     private Elements = {
-        email: '#email',
- 	    password: '#password',
+        username: 'input[name="username"]',
+ 	    password: 'input[name="password"]',
 	    email_input: 'ihossain+merchant_Sandbox-KBF-Test-01172024-1@exactpay.com',
 	    password_input: 'Password1',
-	    login_button: 'div:has-text("Log In") >> nth=5',
+	    login_button: 'button[type="submit"]',
         new_password: '#newPassword',
         confirm_new_password: '#confirmNewPassword',
         set_new_password_button: 'deiv:has=text("Set New Password")',
-        message: 'a:has-text("Your password has been set successfully, Please login to access your account.")',
+        username_message: 'span:has-text("Required") >> nth=0',
+        password_message: 'span:has-text("Required") >> nth=1',
         login_button_new: 'div:has-text("Log In")',
         login_button_new_header: 'div:has-text("Accept Invitation")',
         forgot_password: 'div:has-text("Forgot Password") >> nth=5',
@@ -32,8 +31,23 @@ export default class LoginPage {
         await this.page.goto(process.env.BASEURL);
         // await this.page.pause();
         // If the user is loged, logout the user
-    
     }
 
+    async login(username, password) {
+        await this.page.locator(this.Elements.username).fill(username);
+        await this.page.locator(this.Elements.password).fill(password);
+        await this.page.locator(this.Elements.login_button).click();
+        await this.page.waitForTimeout(2000);
+    }
+
+    async veerifyLoginErrorMessage(errorMessage) {
+        const error = await this.page.textContent('.oxd-alert-content-text');
+        expect(error).toContain(errorMessage);
+    }
+
+    async veerifyLoginErrorMessageForRequaredField(errorMessage) {
+        expect(this.Elements.username_message).toContain(errorMessage);
+        expect(this.Elements.username_message).toContain(errorMessage);
+    }
    
 }

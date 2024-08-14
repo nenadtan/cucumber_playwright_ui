@@ -9,3 +9,5 @@ export let password_reset = 'Password2'+number
 export let partnerAdmin_username = 'ihossain+partnerAdmin_Sandbox-KBF-Test-11152023@exactpay.com'
 export let partnerAdmin_password = 'Password1'
 export let new_report = 'ExactReport'
+export let invalid_username = 'Invalid Admin'
+export let invalid_password = 'Password1'
