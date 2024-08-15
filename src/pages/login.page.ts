@@ -47,7 +47,6 @@ export default class LoginPage {
 
     async veerifyLoginErrorMessageForRequaredField(errorMessage) {
         expect(this.Elements.username_message).toContain(errorMessage);
-        expect(this.Elements.username_message).toContain(errorMessage);
     }
    
 }

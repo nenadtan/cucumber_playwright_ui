@@ -23,5 +23,5 @@ export async function createObjectModelPages (page: Page) {
 	pages.fakeEmailPage = new FakeEmailPage(page);
 	pages.loginPage = new LoginPage(page);
 	pages.homePage = new HomePage(page);
-	pages. forgotPasswordPage= new ForgotPasswordPage(page);
+	pages.forgotPasswordPage= new ForgotPasswordPage(page);
 }

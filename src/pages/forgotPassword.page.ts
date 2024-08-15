@@ -13,13 +13,13 @@ export default class ForgotPasswordPage {
     user_name_filed: "div:has-text('Israt Hossain')",
     logout: "a:has-text('Logout')",
     reporting: "a:has-text('Reporting')",
-    forgot_password_button: "p:has-text('Forgot your password? ')",
+    forgot_password: "p:has-text('Forgot your password? ')",
     username_message: 'span:has-text("Required")',
     successfull_message: 'h6:has-text("Reset Password link sent successfully")',
   }
 
   async clickForgotPasswordLink() {
-    await this.page.click(this.Elements.forgot_password_button);
+    await this.page.click(this.Elements.forgot_password);
   }
 
   async navigateToForgotPasswordPage() {
