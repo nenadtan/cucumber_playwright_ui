@@ -7,7 +7,13 @@
     "pretest": "npx ts-node src/helper/report/init.ts",
     "posttest": "npx ts-node src/helper/report/report.ts",
     "test:failed": "cucumber-js -p rerun @rerun.txt",
-    "test": "suppress-exit-code cross-env ENV=$E cucumber-js --tags $T"
+    "test": "suppress-exit-code cross-env ENV=$E cucumber-js --tags $T",
+    "test:default": "npx cucumber-js",
+    "test:dev": "ENV=development npx cucumber-js",
+    "test:staging": "ENV=staging npx cucumber-js",
+    "test:qa": "ENV=qa npx cucumber-js",
+    "test:parallel": "npx cucumber-js --parallel 4",
+    "test:rerun": "npx cucumber-js -p rerun" 
   },
   "keywords": [
     "cucumber",

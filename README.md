@@ -87,4 +87,98 @@ Playwright TypeScript is a powerful superset of JavaScript that adds optional st
    - Click on green Play button on the top on side bar with text `Debug Cucumber`
    - Test will be run in Debug mode and stops on break point
 
+## Playwright/Cucumber Test Parallel run
+
+The framework supports parallel execution of test scenarios and allows tests to be run in different environments by loading environment-specific configuration files.
+
+### File Structure
+```bash
+src/
+├── helper/
+│   └── env/
+│       ├── .env.dev
+│       ├── .env.qa
+│       └── .env.staging
+```
+### Usage
+To specify an environment, set the ENV variable before running the tests:
+```bash
+ENV=development npx cucumber-js
+```
+This command will load the environment variables from `src/helper/env/.env.development`.
+
+## Parallel Execution
+
+The framework is configured to run tests in parallel, which can significantly reduce the time required to execute all scenarios.
+
+### Changing the Number of Parallel Processes
+
+You can control the number of parallel processes used during test execution by modifying the `parallel` setting in the `cucumber.js` configuration file.
+
+Default Profile:
+In the `default` profile, the `parallel` value is set to 4. This means that `4` parallel processes will be used to execute the tests.
+
+Rerun Profile:
+In the `rerun` profile, the `parallel` value is set to `2`. This profile is typically used for rerunning failed scenarios.
+
+How to Modify:
+To change the number of parallel processes, update the `parallel` value in the `cucumber.js` file:
+
+```bash
+module.exports = {
+    default: {
+        // Other settings...
+        parallel: 4  // Set to the desired number of parallel processes
+    },
+    rerun: {
+        // Other settings...
+        parallel: 2  // Set to the desired number of parallel processes
+    }
+};
+```
+
+### Running Tests
+
+#### Default Execution:
+
+Run all tests in parallel using the default environment and settings:
+```bash
+npx cucumber-js
+```
+Or with scirpt:
+```bash
+npm run test:default
+```
+
+#### Execute tests in parallel:
+To run tests in parallel with different set of proccessors:
+```bash
+npx cucumber-js --parallel 4
+```
+Or with scirpt:
+```bash
+npm run test:parallel
+```
+
+#### Executing with a Specific Environment:
+To run the tests in a specific environment, use the ENV variable:
+```bash
+ENV=qa npx cucumber-js
+```
+Or with scirpt:
+```bash
+npm run test:qa
+```
+
+#### Rerunning Failed Tests:
+If tests fail, you can rerun them using the rerun profile:
+```bash
+ENV=qa npx cucumber-js -p rerun
+```
+Or with scirpt:
+```bash
+npm run test:rerun
+```
+
+
 
